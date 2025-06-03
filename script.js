@@ -1,9 +1,4 @@
-const questionsElement = document.getElementById("questions");
-const scoreElement = document.getElementById("score");
-const submitButton = document.getElementById("submit");
-
-// Load progress from sessionStorage
-let userAnswers = JSON.parse(sessionStorage.getItem("progress")) || [];
+let userAnswers = JSON.parse(sessionStorage.getItem("progress")) || new Array(questions.length).fill(null);
 
 // Display the quiz questions and choices
 function renderQuestions() {
@@ -47,7 +42,13 @@ function renderQuestions() {
   }
 }
 
-renderQuestions();
+// Check if the score is already stored in local storage
+const storedScore = localStorage.getItem("score");
+if (storedScore) {
+  scoreElement.textContent = `Your previous score is ${storedScore} out of 5.`;
+} else {
+  renderQuestions(); // Render questions if no previous score
+}
 
 // Submit button logic
 submitButton.addEventListener("click", () => {
