@@ -1,4 +1,23 @@
 //your JS code here.
+const questionsElement = document.getElementById("questions");
+const scoreElement = document.getElementById("score");
+const submitButton = document.getElementById("submit");
+
+let userAnswers = JSON.parse(sessionStorage.getItem("progress")) || [];
+
+submitButton.addEventListner('click',()=>{
+	let score = 0;
+	for(let i = 0;i<questions.length;i++){
+if(userAnswers[i]===questions[i].answer){
+	score++;
+}
+}
+	scoreElement.textcontent = `Your score is ${score} out of 5.`;
+
+	localStorage.setItem("score",score);
+});
+
+
 
 // Do not change code below this line
 // This code will just display the questions to the screen
