@@ -5,7 +5,7 @@ const submitButton = document.getElementById("submit");
 
 let userAnswers = JSON.parse(sessionStorage.getItem("progress")) || [];
 
-submitButton.addEventListner('click',()=>{
+submitButton.addEventListener('click',()=>{
 	let score = 0;
 	for(let i = 0;i<questions.length;i++){
 if(userAnswers[i]===questions[i].answer){
